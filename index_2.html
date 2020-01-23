@@ -1,0 +1,87 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+</head>
+<body>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<div id="app">
+    <p>{{title}}</p>
+<div>
+    <button type="button" v-on:click="SumPep()" > SUM </button>
+</div>
+
+<div>
+    <h3>Общее количество пользователей - {{this.list.length}}</h3>
+</div>
+
+
+<hr>
+    <table  border="1" v-show="condition"  >
+
+        <tr>
+            <td v-for="item in list">{{item.Name}} </td>
+
+        </tr>
+        <tr>
+            <td v-for="item in list">{{item.SurName}}</td>
+
+        </tr>
+        <tr>
+            <td v-for="item in list">{{item.SecondName}}</td>
+        </tr>
+        <tr>
+            <td v-for="item in list"><a>{{item.src}}</a></td>
+
+        </tr>
+
+    </table>
+<hr>
+<button type="button" v-on:click="HideTable()" > СКРЫТЬ/ОТКРЫТЬ </button>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  window.app = new Vue({
+     el:'#app',
+     data: function () {
+         return{
+         title:'Hello, Vue!',
+         condition: true,
+         list:[
+             {Name:'Вася', SurName:'Васильев', SecondName:'Васильевич',src: "http://goroskop.ru/img/_derevo.jpg" },
+             {Name:'Иван', SurName:'Иванов', SecondName:'Иванович',src: "http://goroskop.ru/img/_derevo.jpg"},
+             {Name:'Петя', SurName:'Васильев', SecondName:'Петрович',src: "http://goroskop.ru/img/_derevo.jpg"},
+             {Name:'Олег', SurName:'Иванов', SecondName:'Петрович',src: "http://goroskop.ru/img/_derevo.jpg"},
+             {Name:'Георгий', SurName:'Кузнецов', SecondName:'Олегович',src: "http://goroskop.ru/img/_derevo.jpg"}
+
+         ]
+
+         }
+
+     },
+     methods:{
+         HideTable:function () {if (this.condition == true){
+             return this.condition = false}
+             else {
+                 return this.condition = true
+            }
+         },
+         SumPep:function () {
+             return alert(this.list.length)
+
+         }
+
+
+     }
+
+  })
+
+
+</script>
+</body>
+</html>
+
